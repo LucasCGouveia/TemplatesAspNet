@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Login</title>
+    </head>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <body>
+        <div>
+            <form action="/Login/Login" method="post">
+                @{
+                    <h1>Login</h1>
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    if (@ViewBag.Message != null)
+                    {
+                        <div style="border:1px solid red">
+                            @ViewBag.Message
+                        </div>
+                    }
+                    <div class="mb-3">
+                        <label for="txtEmail" class="form-label">Email:</label>
+                        <input type="email" class="form-control" name="email" id="txtEmail" placeholder="Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtSenha" class="form-label">Senha:</label>
+                        <input type="password" class="form-control" name="password" id="txtSenha" placeholder="Senha" required>
+                    </div>
+                    <button class="btn btn-info">Login</button>
+                }
+            </form>
+        </div>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+    </body>
+    </html>

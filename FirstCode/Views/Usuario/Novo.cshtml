@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Novo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Novo Usuário</h2>
+
+<div class="container">
+    <form action="/Usuario/Novo" method="post">
+        <div class="mb-3">
+            <label for="txtNome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="txtNome" name="nome" placeholder="Nome" required>
+        </div>
+        <div class="mb-3">
+            <label for="txtEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="txtEmail" name="email" placeholder="Email" required>
+        </div>
+        <div class="mb-3">
+            <label for="txtData" class="form-label">Data Nascimento</label>
+            <input type="date" class="form-control" id="txtData" name="dataNascimento" placeholder="Data Nascimento" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="txtSenha" name="senha" placeholder="Senha" required>
+        </div>
+        <div class="mb-3">
+            <label for="selPerfil" class="form-label">Perfil</label>
+            <select class="form-select" id="selPerfil" name="perfil" aria-label="Default select example">
+                <option selected>Selecione um perfil...</option>
+                @{
+                    foreach (var perfil in ViewBag.Perfil)
+                    {
+                        <option value="@perfil.IdPerfil">@perfil.Descricao</option>
+                    }
+                }
+            </select>
+        </div>
+        <button class="btn btn-success">Salvar</button>
+    </form>
+</div>

@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="mt-3 d-flex">
+    <div class="w-50">
+        <h2>Usuários</h2>
+    </div>
+    <div class="w-50 d-flex align-items-end justify-content-end">
+        <a href="/Perfil/Novo" class="btn btn-info col-4">Novo</a>
+    </div>
+
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var perfil in ViewBag.Perfil)
+            {
+                <tr>
+                    <th scope="row">@perfil.IdPerfil</th>
+                    <td>@perfil.Descricao</td>
+                    <td><a href="/Perfil/Editar/@perfil.IdPerfil">Editar</a>/<a href="/Perfil/Excluir/@perfil.IdPerfil">Excluir</a></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

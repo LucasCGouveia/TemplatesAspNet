@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Editar Usuario</h2>
+
+<div class="container">
+    <form action="/Usuario/Editar/@ViewBag.Usuario.IdUsuario" method="post">
+        <div class="mb-3">
+            <label for="txtNome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="txtNome" name="nome" placeholder="Nome" required value="@ViewBag.Usuario.Nome">
+        </div>
+        <div class="mb-3">
+            <label for="txtEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="txtEmail" name="email" placeholder="Email" required value="@ViewBag.Usuario.Email">
+        </div>
+        <div class="mb-3">
+            <label for="txtData" class="form-label">Data Nascimento</label>
+            <input type="date" class="form-control" id="txtData" name="dataNascimento" placeholder="Data Nascimento" required value="@ViewBag.Usuario.DataNascimento.ToString("yyyy-MM-dd")">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="txtSenha" name="senha" placeholder="Senha" required value="@ViewBag.Usuario.Senha">
+        </div>
+        <div class="mb-3">
+            <label for="selPerfil" class="form-label">Perfil</label>
+            <select class="form-select" id="selPerfil" name="perfil" aria-label="Default select example">
+                <option selected>Selecione um perfil...</option>
+                @{
+                    foreach (var perfil in ViewBag.Perfil)
+                    {
+                        if (ViewBag.Usuario.Perfil.IdPerfil == perfil.IdPerfil)
+                        {
+                            <option value="@perfil.IdPerfil" selected>@perfil.Descricao</option>
+                        }
+                        else
+                        {
+                            <option value="@perfil.IdPerfil">@perfil.Descricao</option>
+                        }
+                    }
+                }
+            </select>
+        </div>
+        <button class="btn btn-success">Salvar</button>
+    </form>
+</div>

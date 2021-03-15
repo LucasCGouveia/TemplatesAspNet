@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Editar Perfil</h2>
+
+<div class="container">
+    <form action="/Perfil/Editar/@ViewBag.Perfil.IdPerfil" method="post">
+        <div class="mb-3">
+            <label for="txtDescricao" class="form-label">Descrição</label>
+            <input type="text" class="form-control" id="txtDescricao" name="descricao" placeholder="Descrição" required value="@ViewBag.Perfil.Descricao">
+        </div>
+        <button class="btn btn-success">Salvar</button>
+    </form>
+</div>

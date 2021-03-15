@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="mt-3 d-flex">
+        <div class="w-50">
+            <h2>Usuários</h2>
+        </div>
+        <div class="w-50 d-flex align-items-end justify-content-end">
+            <a href="/Usuario/Novo" class="btn btn-info col-4">Novo</a>
+        </div>
+        
+    </div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Data Nascimento</th>
+            <th scope="col">Perfil</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var usuario in ViewBag.Usuario)
+            {
+                <tr>
+                    <th scope="row">@usuario.IdUsuario</th>
+                    <td>@usuario.Nome</td>
+                    <td>@usuario.Email</td>
+                    <td>@usuario.DataNascimento</td>
+                    <td>@usuario.PerfilDescricao</td>
+                    <td><a href="/Usuario/Editar/@usuario.IdUsuario">Editar</a>/<a href="/Usuario/Excluir/@usuario.IdUsuario">Excluir</a>/<a href="/Usuario/TesteProcedure/@usuario.IdUsuario">Procedure</a></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
